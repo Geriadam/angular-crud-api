@@ -1,0 +1,30 @@
+<button class="btn btn-primary" (click) = "goBuku()"><span class="glyphicon glyphicon-circle-arrow-left"></span> Back</button>
+<br><br>
+
+<form #formAddBuku = "ngForm" (ngSubmit) = "onSubmit(formAddBuku); formAddBuku.reset()">
+	<div class="form-group" [class.has-error]="judul_buku.invalid && judul_buku.touched" [class.has-success]="judul_buku.valid">
+		<label class="control-label">Judul Buku</label>
+		<input type="text" class="form-control" name="judul_buku" #judul_buku="ngModel" [(ngModel)]="bukuService.judul_buku" required minlength="8">
+		<div class="help-block" *ngIf="judul_buku.errors && (judul_buku.dirty || judul_buku.touched)">
+		  <p *ngIf="judul_buku.errors.required">Judul Buku is harus di isi</p>
+		  <p *ngIf="judul_buku.errors.minlength">Judul Buku minimal 8 karakter</p>
+		</div>
+	</div>
+	<div class="form-group" [class.has-error]="penerbit_buku.invalid && penerbit_buku.touched" [class.has-success]="penerbit_buku.valid">
+		<label class="control-label">Penerbit Buku</label>
+		<input type="text" class="form-control" name="penerbit_buku" #penerbit_buku="ngModel" [(ngModel)]="bukuService.penerbit_buku" required>
+		<div class="help-block" *ngIf="penerbit_buku.errors && (penerbit_buku.dirty || penerbit_buku.touched)">
+		  <p *ngIf="penerbit_buku.errors.required">Penerbit Buku is harus di isi</p>
+		</div>
+	</div>
+	<div class="form-group" [class.has-error]="pengarang_buku.invalid && pengarang_buku.touched" [class.has-success]="pengarang_buku.valid">
+		<label class="control-label">Pengarang Buku</label>
+		<input type="text" class="form-control" name="pengarang_buku" #pengarang_buku="ngModel" [(ngModel)]="bukuService.pengarang_buku" required>
+		<div class="help-block" *ngIf="pengarang_buku.errors && (pengarang_buku.dirty || pengarang_buku.touched)">
+		  <p *ngIf="pengarang_buku.errors.required">Pengarang Buku is harus di isi</p>
+		</div>
+	</div>
+	<div class="form-group">
+		<button type="submit" class="btn btn-primary" [disabled]="formAddBuku.invalid"><span class="glyphicon glyphicon-floppy-disk"></span> Simpan</button>
+	</div>
+</form>

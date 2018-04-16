@@ -1,0 +1,29 @@
+<button class="btn btn-primary" (click) = "goBukuTambah()"><span class="glyphicon glyphicon-plus"></span> Tambah</button>
+<br><br>
+<div class="row">
+<table class="table table-responsive table-bordered" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+	<thead>
+		<tr>
+			<th>Judul Buku</th>
+			<th>Penerbit Buku</th>
+			<th>Pengarang Buku</th>
+			<th colspan="2" style="text-align: center;">Aksi</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor = "let buku of databuku">
+			<td>{{ buku.judul_buku }}</td>
+			<td>{{ buku.penerbit_buku }}</td>
+			<td>{{ buku.pengarang_buku }}</td>
+			<td>
+				<button class="btn btn-warning" (click) = "editBuku(buku.id_buku)">
+					<span class="glyphicon glyphicon-pencil"></span> Edit
+				</button> 
+				<button class="btn btn-danger" (click) = "deleteBuku(buku.id_buku)">
+					<span class="glyphicon glyphicon-trash"></span> Hapus
+				</button>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div>

@@ -1,0 +1,32 @@
+<button class="btn btn-primary" (click) = "goBuku()"><span class="glyphicon glyphicon-circle-arrow-left"></span> Back</button>
+<br><br>
+
+<form #formEditBuku = "ngForm" (ngSubmit) = "onSubmit(formEditBuku)">
+	<input type="hidden" name="id_buku" #id_buku="ngModel" [(ngModel)]="selectBuku[0].id_buku">
+	<div class="form-group" [class.has-error]="judul_buku.invalid && judul_buku.touched" [class.has-success]="judul_buku.valid">
+		<label>Judul Buku</label>
+		<input type="text" class="form-control" name="judul_buku" #judul_buku="ngModel" [(ngModel)]="selectBuku[0].judul_buku">
+		<div class="help-block" *ngIf="judul_buku.errors && (judul_buku.dirty || judul_buku.touched)">
+		  <p *ngIf="judul_buku.errors.required">Judul Buku is harus di isi</p>
+		</div>
+	</div>
+	<div class="form-group" [class.has-error]="penerbit_buku.invalid && penerbit_buku.touched" [class.has-success]="penerbit_buku.valid">
+		<label>Penerbit Buku</label>
+		<input type="text" class="form-control" name="penerbit_buku" #penerbit_buku="ngModel" [(ngModel)]="selectBuku[0].penerbit_buku">
+		<div class="help-block" *ngIf="penerbit_buku.errors && (penerbit_buku.dirty || penerbit_buku.touched)">
+		  <p *ngIf="penerbit_buku.errors.required">Penerbit Buku is harus di isi</p>
+		</div>
+	</div>
+	<div class="form-group" [class.has-error]="pengarang_buku.invalid && pengarang_buku.touched" [class.has-success]="pengarang_buku.valid">
+		<label>Pengarang Buku</label>
+		<input type="text" class="form-control" name="pengarang_buku" #pengarang_buku="ngModel" [(ngModel)]="selectBuku[0].pengarang_buku" required>
+		<div class="help-block" *ngIf="pengarang_buku.errors && (pengarang_buku.dirty || pengarang_buku.touched)">
+		  <p *ngIf="pengarang_buku.errors.required">Pengarang Buku is harus di isi</p>
+		</div>
+	</div>
+	<div class="form-group">
+		<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
+	</div>
+</form>
+
+{{ formEditBuku.value.id_buku | json }}
